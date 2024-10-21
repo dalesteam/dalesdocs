@@ -24,6 +24,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y netcdf-bin
+
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
