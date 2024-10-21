@@ -1,0 +1,5 @@
+jupyter-book
+f90nml
+netCDF4
+numpy
+matplotlib
