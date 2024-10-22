@@ -5,3 +5,6 @@ parts:
   - caption: Running DALES
     chapters:
       - file: running/tracers.ipynb
+  - caption: Contributing
+    chapters:
+      - file: developers/usermanual.md
