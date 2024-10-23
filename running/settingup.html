@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>User Manual &#8212; The DALESdocs</title>
+    <title>Setting up your system &#8212; The DALESdocs</title>
   
   
   
@@ -57,12 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'developers/usermanual';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'running/settingup';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="List of publications using DALES" href="../running/papers.html" />
+    <link rel="next" title="Compilation of DALES" href="compilation.html" />
+    <link rel="prev" title="DALES documentation" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,34 +180,34 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started with DALES!</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../running/settingup.html">Setting up your system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../running/compilation.html">Compilation of DALES</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Setting up your system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation of DALES</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running your first case in DALES</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../running/testcase.html">TEST CASE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../running/output.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testcase.html">TEST CASE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Output</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setting up your own case</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../running/basic_namoptions.html">Basic Namoptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_namoptions.html">Basic Namoptions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced DALES options</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../running/tracers.html">Running a case with tracers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracers.html">Running a case with tracers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Options outside main branch (for now)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../running/ibm.html">Immersed Boundary Method (IBM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ibm.html">Immersed Boundary Method (IBM)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../running/papers.html">List of publications using DALES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="papers.html">List of publications using DALES</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">User Manual</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../developers/usermanual.html">User Manual</a></li>
 </ul>
 
     </div>
@@ -263,7 +262,7 @@
       
       
       
-      <li><a href="../_sources/developers/usermanual.md" target="_blank"
+      <li><a href="../_sources/running/settingup.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -273,7 +272,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -347,7 +346,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>User Manual</h1>
+    <h1>Setting up your system</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -357,13 +356,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-content">Writing content</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#myst-markdown">MyST-Markdown</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-table-of-contents">Updating the table of contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-libraries-packages">Optional libraries/packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-code">Downloading the code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-on-coding-yourself-in-dales">Planning on coding yourself in DALES?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">Building the documentation</a></li>
 </ul>
             </nav>
         </div>
@@ -375,63 +373,96 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="user-manual">
-<h1>User Manual<a class="headerlink" href="#user-manual" title="Link to this heading">#</a></h1>
-<p>The DALES user manual is built using <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a>. In short, Jupyter Book allows you to easily build a website from Markdown files and/or Jupyter Notebooks. This page will explain the very basics of adding new content to the user manual.</p>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<p>Since Jupyter Book is a Python package, you will obviously need a Python distribution (preferably, a more recent version, say &gt;= 3.10). Additionally, a fresh environment made with you favorite environment manager is recommended to prevent conflicts with other packages. The required packages to build te documentation are listed in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> in the root directory of the <code class="docutils literal notranslate"><span class="pre">dalesdocs</span></code> repository. These can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="setting-up-your-system">
+<h1>Setting up your system<a class="headerlink" href="#setting-up-your-system" title="Link to this heading">#</a></h1>
+<p>This section aids you in preparing and setting up your system to run DALES. We assume you are using a UNIX-based system and are familiar with basic terminal commands. First, we will cover the basic requirements to use DALES, which are minimally required. Second, a list of optional librariers/packages is given that will enable optimal use of DALES. Finally, we will tell how you to obtain the latest, tested version of the code (i.e., the “main branch”).</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<p>DALES has a few general requirements for installation and usage:</p>
+<ul class="simple">
+<li><p>Fortran compiler (e.g., gfortran)</p></li>
+<li><p>MPI implementation (for multi-cpu runs)</p></li>
+<li><p>NetCDF4 libraries (for output/input)</p></li>
+<li><p>CMake libraries</p></li>
+<li><p>Make (to build the code)</p></li>
+</ul>
+<p>These requirements can be easily installed on most UNIX-based systems via a package manager. For example, on <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> via the standard package manager</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cmake
+</pre></div>
+</div>
+<p>On MacOS, a standard way to install packages is via <code class="docutils literal notranslate"><span class="pre">homebrew</span></code></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>cmake
+</pre></div>
+</div>
+<p>When using high-performance conputing (HPC) infrastructures, these requirements may already be pre-installed. Many HPC infrastructures employ sets of software modules in which case the requirements often have to be loaded in. A list of available modules on the system is then given by the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail
+</pre></div>
+</div>
+<p>Available modules can subsequently be loaded via the <code class="docutils literal notranslate"><span class="pre">load</span></code> command, for example, loading <code class="docutils literal notranslate"><span class="pre">cmake</span></code> via:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>cmake
 </pre></div>
 </div>
 </section>
-<section id="writing-content">
-<h2>Writing content<a class="headerlink" href="#writing-content" title="Link to this heading">#</a></h2>
-<p>Content can be provided in two formats: Markdown or Jupyter Notebooks. The former is the most straight-forward format to use and suitable if your content purely consists of text and images. On the other hand, Jupyter Notebooks are useful if you want to include, for example, Python code or Bash commands in your documentation. Jupyter Notebooks are executed during the build process of the website.</p>
-<div class="tip admonition">
+<section id="optional-libraries-packages">
+<h2>Optional libraries/packages<a class="headerlink" href="#optional-libraries-packages" title="Link to this heading">#</a></h2>
+<p>The folling list of libraries/packages can (probably: will) make your use of DALES easier:</p>
+<ul class="simple">
+<li><p>FFTW3 library (better performance Fourier transforms)</p></li>
+<li><p>HYPRE library (for the iterative Poisson solver)</p></li>
+<li><p>Python + numpy + matplotlib (to generate input files and/or analyse output)</p></li>
+<li><p>Python-netcdf4 library (to read in netcdf4 output)</p></li>
+<li><p>CDO (easily merge and operate on multiple netcdf4 files)</p></li>
+</ul>
+</section>
+<section id="downloading-the-code">
+<h2>Downloading the code<a class="headerlink" href="#downloading-the-code" title="Link to this heading">#</a></h2>
+<p>The next step after installed these libraries and packages is to get the DALES code. The example below uses the <code class="docutils literal notranslate"><span class="pre">Git</span></code> software for this purpose. After going to the destination path on your system, download the code by using the command below</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>&lt;currentpath&gt;<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dalesteam/dales.git
+</pre></div>
+</div>
+<p>Here, a new directory called <code class="docutils literal notranslate"><span class="pre">dales</span></code> should have appeared. By default, the latest main branch is checked out inside this directory (denoted by the <code class="docutils literal notranslate"><span class="pre">*</span></code>). This can be confirmed by doing the following</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>dales
+git<span class="w"> </span>branch
+</pre></div>
+</div>
+<p>which should give as output</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>dales<span class="w"> </span>%<span class="w"> </span>*<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Other available branches of the main repository can be viewed with the <code class="docutils literal notranslate"><span class="pre">-a</span></code> option</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>dales<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-a
+*<span class="w"> </span>main
+remotes/origin/3.1
+remotes/origin/3.2
+remotes/origin/4.1
+remotes/origin/4.1_TROFFEEhack
+remotes/origin/4.1_aero_m7
+...
+</pre></div>
+</div>
+<p>Checking out a specific branch (e.g., the <code class="docutils literal notranslate"><span class="pre">ruisdael</span></code> bracnh) is done via</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;newname&gt;<span class="w"> </span>remotes/origin/ruisdael
+</pre></div>
+</div>
+<section id="planning-on-coding-yourself-in-dales">
+<h3>Planning on coding yourself in DALES?<a class="headerlink" href="#planning-on-coding-yourself-in-dales" title="Link to this heading">#</a></h3>
+<p>If you plan to change parts of the code and want to keep track of your changes, it may be worthwhile to use your personal Github account and first fork the main repository. The steps to get the code on your system are then slightly different.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;your_account&gt;/dales.git
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/dalesteam/dales.git
+
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;YOUR NAME&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>checkout.defaultRemote<span class="w"> </span>origin
+
+git<span class="w"> </span>fetch<span class="w"> </span>--all
+
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>origin/main
+</pre></div>
+</div>
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you use any Python packages outside the standard library, please make sure they’re added to <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
+<p>This option will checkout the code in your current directory, <em>without</em> first making a separate <code class="docutils literal notranslate"><span class="pre">dales</span></code> destination directory.</p>
 </div>
-<section id="myst-markdown">
-<h3>MyST-Markdown<a class="headerlink" href="#myst-markdown" title="Link to this heading">#</a></h3>
-<p>Jupyter Book supports a special flavour of Markdown: <a class="reference external" href="https://mystmd.org">MyST</a>. MyST is an extension of regular Markdown and provides the ability to include equations, tables, references, code blocks with syntax highlighting, figure captions, and much more, allowing you to make your content much more lively. For example, we can include a standard LaTeX equation (with label) like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{math}
-:label: pythagorean-theorem
-a^2 = b^2 + c^2
-```
-</pre></div>
-</div>
-<p>which results in:</p>
-<div class="math notranslate nohighlight" id="equation-pythagorean-theorem">
-<span class="eqno">(1)<a class="headerlink" href="#equation-pythagorean-theorem" title="Link to this equation">#</a></span>\[a^2 = b^2 + c^2\]</div>
-<p>Then, we can refer to it in-text with the following syntax: <code class="docutils literal notranslate"><span class="pre">[](#pythagorean-theorem)</span></code>, resulting in: <a class="reference internal" href="#equation-pythagorean-theorem">(1)</a>. For a complete overview of what MyST can do, see the <a class="reference external" href="https://mystmd.org/guide/">documentation</a>.</p>
 </section>
-<section id="updating-the-table-of-contents">
-<h3>Updating the table of contents<a class="headerlink" href="#updating-the-table-of-contents" title="Link to this heading">#</a></h3>
-<p>Finally, to make your content actually show up on the website, you need to add the file(s) to the table of contents(<code class="docutils literal notranslate"><span class="pre">book/_toc.yml</span></code>). The table of contents is relatively self-explainatory, but for more information you can consult the <a class="reference external" href="https://jupyterbook.org/en/stable/structure/toc.html">Jupyter Book documentation</a> or the <a class="reference external" href="https://teachbooks.tudelft.nl/jupyter-book-manual/basic-features/jupyterbook.html#the-table-of-contents">Teachbooks manual</a>.</p>
-</section>
-</section>
-<section id="building-the-documentation">
-<h2>Building the documentation<a class="headerlink" href="#building-the-documentation" title="Link to this heading">#</a></h2>
-<p>To build the website locally for reviewing the new content, invoke the Jupyter Book build command in the root directory of the repository:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">book</span> <span class="n">build</span> <span class="n">book</span><span class="o">/</span>
-</pre></div>
-</div>
-<p>If the build was succesful, you will get some output that looks something like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">===============================================================================</span>
-
-<span class="n">Finished</span> <span class="n">generating</span> <span class="n">HTML</span> <span class="k">for</span> <span class="n">book</span><span class="o">.</span>
-<span class="n">Your</span> <span class="n">book</span><span class="s1">&#39;s HTML pages are here:</span>
-    <span class="n">book</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
-<span class="n">You</span> <span class="n">can</span> <span class="n">look</span> <span class="n">at</span> <span class="n">your</span> <span class="n">book</span> <span class="n">by</span> <span class="n">opening</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">browser</span><span class="p">:</span>
-    <span class="n">book</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
-<span class="n">Or</span> <span class="n">paste</span> <span class="n">this</span> <span class="n">line</span> <span class="n">directly</span> <span class="n">into</span> <span class="n">your</span> <span class="n">browser</span> <span class="n">bar</span><span class="p">:</span>
-    <span class="n">file</span><span class="p">:</span><span class="o">///</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">repository</span><span class="o">/</span><span class="n">dalesdocs</span><span class="o">/</span><span class="n">book</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>            
-
-<span class="o">===============================================================================</span>
-</pre></div>
-</div>
-<p>Now you can, like the output says, review the manual locally by pasting the provided link in your browser.</p>
 </section>
 </section>
 
@@ -448,7 +479,7 @@ a^2 = b^2 + c^2
         },
         kernelOptions: {
             name: "python3",
-            path: "./developers"
+            path: "./running"
         },
         predefinedOutput: true
     }
@@ -466,13 +497,22 @@ a^2 = b^2 + c^2
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../running/papers.html"
+       href="../intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">List of publications using DALES</p>
+        <p class="prev-next-title">DALES documentation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="compilation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compilation of DALES</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -490,13 +530,12 @@ a^2 = b^2 + c^2
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-content">Writing content</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#myst-markdown">MyST-Markdown</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-table-of-contents">Updating the table of contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-libraries-packages">Optional libraries/packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-code">Downloading the code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-on-coding-yourself-in-dales">Planning on coding yourself in DALES?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">Building the documentation</a></li>
 </ul>
   </nav></div>
 
