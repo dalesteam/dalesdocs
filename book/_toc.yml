@@ -2,9 +2,30 @@ format: jb-book
 root: intro.md
 
 parts:
-  - caption: Running DALES
+  - caption: Getting started with DALES!
+    chapters:
+      - file: running/settingup.ipynb
+      - file: running/compilation.ipynb
+  - caption: Running your first case in DALES
+    chapters:
+      - file: running/testcase.ipynb
+      - file: running/output.ipynb
+  - caption: Setting up your own case
+    chapters:
+      - file: running/basic_namoptions.ipynb
+  - caption:  Advanced DALES options
     chapters:
       - file: running/tracers.ipynb
+      # - file: running/chemistry.ipynb
+      # - file: running/ibm.ipynb
+      # - file: running/openbcs.ipynb
+      # - file: running/gpu.ipynb
+  - caption:  Options outside main branch (for now)
+    chapters:
+      - file: running/ibm.ipynb
+  - caption:  Recent publications using DALES
+    chapters:
+      - file: running/papers.ipynb
   - caption: Contributing
     chapters:
       - file: developers/usermanual.md
