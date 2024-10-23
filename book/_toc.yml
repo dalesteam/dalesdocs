@@ -26,3 +26,6 @@ parts:
   - caption:  Recent publications using DALES
     chapters:
       - file: running/papers.ipynb
+  - caption: Contributing
+    chapters:
+      - file: developers/usermanual.md
