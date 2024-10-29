@@ -133,6 +133,7 @@ _build/
 
 # Other stuff
 *.vsdx
+.DS_Store
 
 # Poetry files
 poetry.lock
