@@ -19,7 +19,7 @@ parts:
       # - file: running/chemistry.ipynb
       # - file: running/ibm.ipynb
       # - file: running/openbcs.ipynb
-      # - file: running/gpu.ipynb
+      - file: running/gpu.md
   - caption:  Options outside main branch (for now)
     chapters:
       - file: running/ibm.ipynb
