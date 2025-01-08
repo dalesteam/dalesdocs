@@ -12,7 +12,7 @@ The easiest and recommended way to get started on the GPU is by downloading the 
 
 ## Compiling
 
-To compile DALES for the GPU, OpenACC has to be enabled when configuring the build with CMake. Here, it's important to make sure that CMake uses the correct compiler such that the compilation flags are setup correctly. Using the `which` command, check that the `mpif90` command points to the MPI Fortran compiler wrapper that is bundled with the HPC SDK:
+To compile DALES for the GPU, OpenACC has to be enabled when configuring the build with CMake. Here, it's important to make sure that CMake uses the correct compiler such that the compilation flags are setup correctly. Using the `which` command, check that the `mpif90` command points to the MPI Fortran compiler wrapper that is bundled with the HPC SDK: jkjasdlf
 
 ```{code} bash
 $ which mpif90
