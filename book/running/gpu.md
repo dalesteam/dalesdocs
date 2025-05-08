@@ -1,3 +1,4 @@
+(sec:gpu)=
 # Using the GPU
 DALES now has the option to use graphics processing units (GPU's) to accelerate computations. 
 
