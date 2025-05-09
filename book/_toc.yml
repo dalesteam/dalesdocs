@@ -4,6 +4,7 @@ root: intro.md
 parts:
   - caption: Getting started with DALES!
     chapters:
+      - file: running/changes.md
       - file: running/settingup.ipynb
       - file: running/compilation.ipynb
   - caption: Running your first case in DALES
