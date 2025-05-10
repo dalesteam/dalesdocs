@@ -1,6 +1,6 @@
 # User Manual
 
-The DALES user manual is built using [Jupyter Book](https://jupyterbook.org/en/stable/intro.html). In short, Jupyter Book allows you to easily build a website from Markdown files and/or Jupyter Notebooks. This page will explain the very basics of adding new content to the user manual.
+The DALES documentation is built using [Jupyter Book](https://jupyterbook.org/en/stable/intro.html). In short, Jupyter Book allows you to easily build a website from Markdown files and/or Jupyter Notebooks. This page will explain the very basics of adding new content to the documentation.
 
 ## Prerequisites
 
