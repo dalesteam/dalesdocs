@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="User Manual" href="../developers/usermanual.html" />
-    <link rel="prev" title="Immersed Boundary Method (IBM)" href="ibm.html" />
+    <link rel="prev" title="Using the GPU" href="gpu.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,9 +183,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes between DALES 4.x and 5.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingup.html">Setting up your system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Generic compilation</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation of DALES</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running your first case in DALES</span></p>
 <ul class="nav bd-sidenav">
@@ -199,17 +197,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced DALES options</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tracers.html">Running a case with tracers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu.html">Using the GPU</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Options outside main branch (for now)</span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ibm.html">Immersed Boundary Method (IBM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">Using the GPU</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">List of publications using DALES</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing to the documentation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../developers/usermanual.html">User Manual</a></li>
 </ul>
@@ -424,10 +419,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2024</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2023</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2022</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2021</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2024</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2021</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-before">2020 and before</a></li>
 </ul>
             </nav>
@@ -444,22 +440,29 @@ document.write(`
 <h1>List of publications using DALES<a class="headerlink" href="#list-of-publications-using-dales" title="Link to this heading">#</a></h1>
 <p>The following contains a <em>non-exhaustive</em> list of publications in which DALES was used.</p>
 <section id="id1">
-<h2>2024<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>2025<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Janssens, M., Jansson, F., Alinaghi, P., Glassmeier, F., and Siebesma, A. P. (2025). <em>Symmetry in mesoscale circulations explains weak impact of trade cumulus self‐organization on the radiation budget in large‐eddy simulations.</em> Geophysical Research Letters, <strong>52</strong>, e2024GL112288. <a class="reference external" href="https://doi.org/10.1029/2024GL112288">https://doi.org/10.1029/2024GL112288</a></p></li>
+<li><p>Alinaghi, P., Siebesma, A. P., Jansson, F., Janssens, M., and Glassmeier, F. (2025). <em>External drivers and mesoscale self‐organization of shallow cold pools in the trade‐wind regime.</em> Journal of Advances in Modeling Earth Systems, <strong>17</strong>, e2024MS004540. <a class="reference external" href="https://doi.org/10.1029/2024MS004540">https://doi.org/10.1029/2024MS004540</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>2024<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Liqui Lung, F., Jakob, C., Siebesma, A. P. and Jansson, F. (2024). <em>Open boundary conditions for atmospheric large-eddy simulations and their implementation in DALES4.4</em>. Geoscientific Model Development, <strong>17(9)</strong>, 4053–4076, <a class="reference external" href="https://doi.org/10.5194/gmd-17-4053-2024">https://doi.org/10.5194/gmd-17-4053-2024</a></p></li>
 </ul>
 </section>
-<section id="id2">
-<h2>2023<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>2023<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Jansson, F., Janssens, M., Grönqvist, J. H., Siebesma, A. P., Glassmeier, F., Attema, J., et al. (2023). <em>Cloud Botany: Shallow cumulus clouds in an ensemble of idealized large-domain large-eddy simulations of the trades</em>. Journal of Advances in Modeling Earth Systems, <strong>15</strong>, e2023MS003796. <a class="reference external" href="https://doi.org/10.1029/2023MS003796">https://doi.org/10.1029/2023MS003796</a></p></li>
 </ul>
 </section>
-<section id="id3">
-<h2>2022<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-</section>
 <section id="id4">
-<h2>2021<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>2022<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+</section>
+<section id="id5">
+<h2>2021<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 </section>
 <section id="and-before">
 <h2>2020 and before<a class="headerlink" href="#and-before" title="Link to this heading">#</a></h2>
@@ -497,12 +500,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ibm.html"
+       href="gpu.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Immersed Boundary Method (IBM)</p>
+        <p class="prev-next-title">Using the GPU</p>
       </div>
     </a>
     <a class="right-next"
@@ -530,10 +533,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2024</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2023</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2022</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2021</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2024</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2021</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-before">2020 and before</a></li>
 </ul>
   </nav></div>
