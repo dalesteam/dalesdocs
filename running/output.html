@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Output &#8212; The DALESdocs</title>
+    <title>DALES Output &#8212; The DALESdocs</title>
   
   
   
@@ -188,7 +188,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running your first case in DALES</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="testcase.html">TEST CASE</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Output</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DALES Output</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setting up your own case</span></p>
 <ul class="nav bd-sidenav">
@@ -278,7 +278,7 @@
       
       
       
-      <li><a href="https://github.com/dalesteam/dalesdocs/edit/main/book/running/output.ipynb" target="_blank"
+      <li><a href="https://github.com/dalesteam/dalesdocs/edit/main/book/running/output.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +325,7 @@
       
       
       
-      <li><a href="../_sources/running/output.ipynb" target="_blank"
+      <li><a href="../_sources/running/output.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -335,7 +335,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -396,7 +396,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -407,11 +409,27 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Output</h1>
+    <h1>DALES Output</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-output">Enabling output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-with-one-directory-per-mpi-row">Output with one directory per MPI row</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-netcdf-tiles">Merging netCDF tiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-variables">Selecting variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression">Compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf-time-units">NetCDF time units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-large-cases">Handling large cases</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -421,8 +439,71 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="output">
-<h1>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dales-output">
+<h1>DALES Output<a class="headerlink" href="#dales-output" title="Link to this heading">#</a></h1>
+<section id="enabling-output">
+<h2>Enabling output<a class="headerlink" href="#enabling-output" title="Link to this heading">#</a></h2>
+<p>To save cross sections or 3D fields the following settings are needed in the namelist file for Dales. Output is saved in netCDF format by default.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">NAMCROSSSECTION</span>
+<span class="n">lcross</span>      <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+<span class="n">crossheight</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">80</span>
+<span class="n">dtav</span>        <span class="o">=</span> <span class="mi">60</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>crossheights is a list of z-levels for which to save horizontal cross sections.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">NAMFIELDDUMP</span>
+<span class="n">lfielddump</span>  <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+<span class="n">dtav</span>        <span class="o">=</span> <span class="mi">60</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="output-with-one-directory-per-mpi-row">
+<h2>Output with one directory per MPI row<a class="headerlink" href="#output-with-one-directory-per-mpi-row" title="Link to this heading">#</a></h2>
+<p>When running with many cores the amount of output files in the run directory becomes annoying (and some supercomputer file systems don’t like more than a few thousand files per directory).
+With the option <code class="docutils literal notranslate"><span class="pre">loutdirs</span></code> set to true, the output from each row of MPI processes is placed in its own directory: 000, 001, 002, … .</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">RUN</span>
+<span class="n">loutdirs</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="merging-netcdf-tiles">
+<h2>Merging netCDF tiles<a class="headerlink" href="#merging-netcdf-tiles" title="Link to this heading">#</a></h2>
+<p>For 2D and 3D output, each DALES process saves it’s own<br />
+The command <code class="docutils literal notranslate"><span class="pre">cdo</span></code> can be used to merge netCDF tiles.
+Use cdo version &gt;= 2.0.6.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span> <span class="o">-</span><span class="n">O</span> <span class="n">collgrid</span> <span class="n">crossxy</span><span class="mf">.0001</span><span class="o">.*.</span><span class="n">nc</span>  <span class="n">crossxy</span><span class="mf">.0001</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-O</span></code> is for overwriting the target file if it exists.</p>
+<section id="selecting-variables">
+<h3>Selecting variables<a class="headerlink" href="#selecting-variables" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span> <span class="o">-</span><span class="n">O</span> <span class="n">collgrid</span><span class="p">,</span><span class="n">vxy</span> <span class="n">crossxy</span><span class="mf">.0001</span><span class="o">.*.</span><span class="n">nc</span>  <span class="n">crossxy</span><span class="mf">.0001</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<p>To include only selected variables in the output, add a comma-separated list after collgrid (no spaces).</p>
+</section>
+<section id="compression">
+<h3>Compression<a class="headerlink" href="#compression" title="Link to this heading">#</a></h3>
+<p>Optionally add flags to enable compressed netCDF4 output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span> <span class="o">-</span><span class="n">f</span> <span class="n">nc4</span> <span class="o">-</span><span class="n">z</span> <span class="n">zip_6</span> <span class="o">-</span><span class="n">O</span> <span class="n">collgrid</span> <span class="n">crossxy</span><span class="mf">.0001</span><span class="o">.*.</span><span class="n">nc</span>  <span class="n">crossxy</span><span class="mf">.0001</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</section>
+<section id="netcdf-time-units">
+<h3>NetCDF time units<a class="headerlink" href="#netcdf-time-units" title="Link to this heading">#</a></h3>
+<p>If both <code class="docutils literal notranslate"><span class="pre">xyear</span></code> and <code class="docutils literal notranslate"><span class="pre">xday</span></code> are present in the DOMAIN namelist,
+DALES outputs proper time units in the netCDF: <code class="docutils literal notranslate"><span class="pre">seconds</span> <span class="pre">since</span> <span class="pre">2020-01-02T00:00:00.</span></code> Otherwise the unit is just <code class="docutils literal notranslate"><span class="pre">s</span></code>, meaning seconds since the start of the simulation.</p>
+</section>
+<section id="handling-large-cases">
+<h3>Handling large cases<a class="headerlink" href="#handling-large-cases" title="Link to this heading">#</a></h3>
+<p>If cdo runs out of memory, it may help to do the merging in two steps:
+first merge each row of tiles into a stripe, then merge the stripes.
+To save time, do not enable compression for the intermediate files.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -479,6 +560,29 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-output">Enabling output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-with-one-directory-per-mpi-row">Output with one directory per MPI row</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-netcdf-tiles">Merging netCDF tiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-variables">Selecting variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression">Compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf-time-units">NetCDF time units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-large-cases">Handling large cases</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
