@@ -10,7 +10,7 @@ parts:
   - caption: Running your first case in DALES
     chapters:
       - file: running/testcase.ipynb
-      - file: running/output.ipynb
+      - file: running/output.md
   - caption: Setting up your own case
     chapters:
       - file: running/basic_namoptions.ipynb
