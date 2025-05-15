@@ -5,8 +5,8 @@ parts:
   - caption: Getting started with DALES!
     chapters:
       - file: running/changes.md
-      - file: running/settingup.ipynb
-      - file: running/compilation.ipynb
+      - file: running/settingup.md
+      - file: running/compilation.md
   - caption: Running your first case in DALES
     chapters:
       - file: running/testcase.ipynb
