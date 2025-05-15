@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Compilation of DALES &#8212; The DALESdocs</title>
+    <title>Downloading the code &#8212; The DALESdocs</title>
   
   
   
@@ -183,7 +183,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes between DALES 4.x and 5.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settingup.html">Setting up your system</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Compilation of DALES</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Downloading the code</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running your first case in DALES</span></p>
 <ul class="nav bd-sidenav">
@@ -278,7 +279,7 @@
       
       
       
-      <li><a href="https://github.com/dalesteam/dalesdocs/edit/main/book/running/compilation.ipynb" target="_blank"
+      <li><a href="https://github.com/dalesteam/dalesdocs/edit/main/book/running/compilation.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +326,7 @@
       
       
       
-      <li><a href="../_sources/running/compilation.ipynb" target="_blank"
+      <li><a href="../_sources/running/compilation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -335,7 +336,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -409,7 +410,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Compilation of DALES</h1>
+    <h1>Downloading the code</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,6 +420,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Downloading the code</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-submodules">Initialize submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-on-coding-yourself-in-dales">Planning on coding yourself in DALES?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-of-dales">Compilation of DALES</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-compilation">Generic compilation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-options">Compilation options</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-on-specific-clusters">Compilation on specific clusters</a><ul class="nav section-nav flex-column">
@@ -427,6 +434,9 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -437,7 +447,65 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="compilation-of-dales">
+  <section class="tex2jax_ignore mathjax_ignore" id="downloading-the-code">
+<h1>Downloading the code<a class="headerlink" href="#downloading-the-code" title="Link to this heading">#</a></h1>
+<p>The next step after installed these libraries and packages is to get the DALES code. The example below uses the <code class="docutils literal notranslate"><span class="pre">Git</span></code> software for this purpose. After going to the destination path on your system, download the code by using the command below</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>&lt;currentpath&gt;<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dalesteam/dales.git
+</pre></div>
+</div>
+<p>Here, a new directory called <code class="docutils literal notranslate"><span class="pre">dales</span></code> should have appeared. By default, the latest main branch is checked out inside this directory (denoted by the <code class="docutils literal notranslate"><span class="pre">*</span></code>). This can be confirmed by doing the following</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>dales
+git<span class="w"> </span>branch
+</pre></div>
+</div>
+<p>which should give as output</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>*<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Other available branches of the main repository can be viewed with the <code class="docutils literal notranslate"><span class="pre">-a</span></code> option</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>dales<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-a
+*<span class="w"> </span>main
+remotes/origin/3.1
+remotes/origin/3.2
+remotes/origin/4.1
+remotes/origin/4.1_TROFFEEhack
+remotes/origin/4.1_aero_m7
+...
+</pre></div>
+</div>
+<p>Checking out a specific branch (e.g., the <code class="docutils literal notranslate"><span class="pre">ruisdael</span></code> branch) is done via</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;newname&gt;<span class="w"> </span>remotes/origin/ruisdael
+</pre></div>
+</div>
+<section id="initialize-submodules">
+<h2>Initialize submodules<a class="headerlink" href="#initialize-submodules" title="Link to this heading">#</a></h2>
+<p>This step is required to fetch some external libraries, e.g. RRTMG and RRTMGP.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>init
+git<span class="w"> </span>submodule<span class="w"> </span>update
+</pre></div>
+</div>
+</section>
+<section id="planning-on-coding-yourself-in-dales">
+<h2>Planning on coding yourself in DALES?<a class="headerlink" href="#planning-on-coding-yourself-in-dales" title="Link to this heading">#</a></h2>
+<p>If you plan to change parts of the code and want to keep track of your changes, it may be worthwhile to use your personal Github account and first fork the main repository. The steps to get the code on your system are then slightly different.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;your_account&gt;/dales.git
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/dalesteam/dales.git
+
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;YOUR NAME&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>checkout.defaultRemote<span class="w"> </span>origin
+
+git<span class="w"> </span>fetch<span class="w"> </span>--all
+
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>origin/main
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This option will checkout the code in your current directory, <em>without</em> first making a separate <code class="docutils literal notranslate"><span class="pre">dales</span></code> destination directory.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="compilation-of-dales">
 <span id="sec-compilation"></span><h1>Compilation of DALES<a class="headerlink" href="#compilation-of-dales" title="Link to this heading">#</a></h1>
 <section id="generic-compilation">
 <h2>Generic compilation<a class="headerlink" href="#generic-compilation" title="Link to this heading">#</a></h2>
@@ -448,11 +516,11 @@ mkdir<span class="w"> </span>build
 </pre></div>
 </div>
 <p>We then invoke <code class="docutils literal notranslate"><span class="pre">cmake</span></code> on the directory where the code is placed. This will configure the build of the code.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../dales<span class="w"> </span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../dales
 </pre></div>
 </div>
 <p>Finally, the code can be build with the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make
 </pre></div>
 </div>
 <p>After successfull compilation, the executable <code class="docutils literal notranslate"><span class="pre">dales</span></code> is located in the subdirectory <code class="docutils literal notranslate"><span class="pre">bin/</span></code>. Compilation of the code may be sped up using the <code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">&lt;nprocs&gt;</span></code> specifier, with <code class="docutils literal notranslate"><span class="pre">nprocs</span></code> being the amount of parallel processes.</p>
@@ -503,7 +571,7 @@ mkdir<span class="w"> </span>build
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>To use HYPRE or FFTW, the library needs to both be enabled at compilation and selected at runtime by setting the &amp;SOLVER section of the namoptions input file. <code class="docutils literal notranslate"><span class="pre">FIX</span> <span class="pre">LINK:</span> <span class="pre">See</span> <span class="pre">Alternative</span> <span class="pre">Poisson</span> <span class="pre">solvers</span></code>.</p>
+<p>To use HYPRE or FFTW, the library needs to both be enabled at compilation and selected at runtime by setting the &amp;SOLVER section of the namoptions input file. See <a class="reference external" href="https://github.com/dalesteam/dales/wiki/Alternative-Poisson-solvers">Alternative Poisson solvers (Wiki)</a>. By default, FFTW is used if the library was found at compilation.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -522,6 +590,13 @@ module<span class="w"> </span>load<span class="w"> </span>netcdf-fortran/4.6.0
 module<span class="w"> </span>load<span class="w"> </span>fftw/3.3.10
 
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dalesteam/dales
+
+<span class="c1"># for dev branch:</span>
+git<span class="w"> </span>checkout<span class="w"> </span>dev
+git<span class="w"> </span>submodule<span class="w"> </span>init
+git<span class="w"> </span>submodule<span class="w"> </span>update
+
+
 <span class="nb">cd</span><span class="w"> </span>dales
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -535,19 +610,20 @@ make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
 </section>
 <section id="snellius-dutch-national-system">
 <h3>Snellius (Dutch National system)<a class="headerlink" href="#snellius-dutch-national-system" title="Link to this heading">#</a></h3>
-<p><strong>Tested with module set 2022</strong></p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span><span class="m">2022</span>
-module<span class="w"> </span>load<span class="w"> </span>foss/2022a
-module<span class="w"> </span>load<span class="w"> </span>netCDF-Fortran/4.6.0-gompi-2022a
-module<span class="w"> </span>load<span class="w"> </span>CMake/3.23.1-GCCcore-11.3.0
-<span class="c1"># module load Hypre/2.25.0-foss-2022a # optional</span>
+<p><strong>Tested with module set 2023</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span><span class="m">2023</span>
+module<span class="w"> </span>load<span class="w"> </span>foss/2023a
+module<span class="w"> </span>load<span class="w"> </span>netCDF-Fortran/4.6.1-gompi-2023a
+module<span class="w"> </span>load<span class="w"> </span>CMake/3.26.3-GCCcore-12.3.0
+<span class="c1"># module load Hypre/2.29.0-foss-2023a</span>
 
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
 <span class="nb">export</span><span class="w"> </span><span class="nv">SYST</span><span class="o">=</span>gnu-fast
-cmake<span class="w"> </span>..<span class="w"> </span>-DUSE_FFTW<span class="o">=</span>True
-<span class="c1"># or, for single precision:</span>
-<span class="c1"># cmake .. -DUSE_FFTW=True -DFIELD_PRECISION=32 -DPOIS_PRECISION=32</span>
+cmake<span class="w"> </span>..
+
+<span class="c1"># or, for single precision (options for version &gt;= 5.0 or dev):</span>
+<span class="c1"># cmake ../dales -DENABLE_FP32_FIELDS=ON -DENABLE_FP32_POIS=ON</span>
 
 make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
 </pre></div>
@@ -620,6 +696,12 @@ make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Downloading the code</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-submodules">Initialize submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-on-coding-yourself-in-dales">Planning on coding yourself in DALES?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-of-dales">Compilation of DALES</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-compilation">Generic compilation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-options">Compilation options</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-on-specific-clusters">Compilation on specific clusters</a><ul class="nav section-nav flex-column">
@@ -628,6 +710,9 @@ make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

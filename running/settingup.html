@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'running/settingup';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Compilation of DALES" href="compilation.html" />
+    <link rel="next" title="Downloading the code" href="compilation.html" />
     <link rel="prev" title="Changes between DALES 4.x and 5.0" href="changes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,7 +183,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes between DALES 4.x and 5.0</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Setting up your system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation of DALES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compilation.html">Downloading the code</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running your first case in DALES</span></p>
 <ul class="nav bd-sidenav">
@@ -278,7 +279,7 @@
       
       
       
-      <li><a href="https://github.com/dalesteam/dalesdocs/edit/main/book/running/settingup.ipynb" target="_blank"
+      <li><a href="https://github.com/dalesteam/dalesdocs/edit/main/book/running/settingup.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +326,7 @@
       
       
       
-      <li><a href="../_sources/running/settingup.ipynb" target="_blank"
+      <li><a href="../_sources/running/settingup.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -335,7 +336,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -421,10 +422,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-libraries-packages">Optional libraries/packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-code">Downloading the code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-on-coding-yourself-in-dales">Planning on coding yourself in DALES?</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -444,10 +441,12 @@ document.write(`
 <p>DALES has a few general requirements for installation and usage:</p>
 <ul class="simple">
 <li><p>Fortran compiler (e.g., gfortran)</p></li>
-<li><p>MPI implementation (for multi-cpu runs)</p></li>
+<li><p>MPI implementation (for multi-cpu runs, OpemnMPI and MPICH have been tested)</p></li>
 <li><p>NetCDF4 libraries (for output/input)</p></li>
-<li><p>CMake libraries</p></li>
+<li><p>CMake</p></li>
 <li><p>Make (to build the code)</p></li>
+<li><p>FFTW library (for the Poisson solver. Optional but highly recommended.)</p></li>
+<li><p>HYPRE library (alternative Poisson solver. Optional.)</p></li>
 </ul>
 <p>These requirements can be easily installed on most UNIX-based systems via a package manager. For example, on <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> via the standard package manager</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cmake
@@ -457,7 +456,7 @@ document.write(`
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>cmake
 </pre></div>
 </div>
-<p>When using high-performance conputing (HPC) infrastructures, these requirements may already be pre-installed. Many HPC infrastructures employ sets of software modules in which case the requirements often have to be loaded in. A list of available modules on the system is then given by the following command:</p>
+<p>When using high-performance conputing (HPC) infrastructures, these requirements may already be pre-installed. Many HPC infrastructures employ sets of software modules in which case the requiments often have to be loaded in. A list of available modules on the system is then given by the following command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail
 </pre></div>
 </div>
@@ -470,62 +469,12 @@ document.write(`
 <h2>Optional libraries/packages<a class="headerlink" href="#optional-libraries-packages" title="Link to this heading">#</a></h2>
 <p>The folling list of libraries/packages can (probably: will) make your use of DALES easier:</p>
 <ul class="simple">
-<li><p>FFTW3 library (better performance Fourier transforms)</p></li>
-<li><p>HYPRE library (for the iterative Poisson solver)</p></li>
 <li><p>Python + numpy + matplotlib (to generate input files and/or analyse output)</p></li>
 <li><p>Python-netcdf4 library (to read in netcdf4 output)</p></li>
-<li><p>CDO (easily merge and operate on multiple netcdf4 files)</p></li>
+<li><p>CDO (easily merge and operate on multiple netcdf4 files. Version &gt;= 2.0.6.)</p></li>
+<li><p>ncview (interactive netCDF viewer)</p></li>
 </ul>
-</section>
-<section id="downloading-the-code">
-<h2>Downloading the code<a class="headerlink" href="#downloading-the-code" title="Link to this heading">#</a></h2>
-<p>The next step after installed these libraries and packages is to get the DALES code. The example below uses the <code class="docutils literal notranslate"><span class="pre">Git</span></code> software for this purpose. After going to the destination path on your system, download the code by using the command below</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>&lt;currentpath&gt;<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dalesteam/dales.git
-</pre></div>
-</div>
-<p>Here, a new directory called <code class="docutils literal notranslate"><span class="pre">dales</span></code> should have appeared. By default, the latest main branch is checked out inside this directory (denoted by the <code class="docutils literal notranslate"><span class="pre">*</span></code>). This can be confirmed by doing the following</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>dales
-git<span class="w"> </span>branch
-</pre></div>
-</div>
-<p>which should give as output</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>dales<span class="w"> </span>%<span class="w"> </span>*<span class="w"> </span>main
-</pre></div>
-</div>
-<p>Other available branches of the main repository can be viewed with the <code class="docutils literal notranslate"><span class="pre">-a</span></code> option</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>dales<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-a
-*<span class="w"> </span>main
-remotes/origin/3.1
-remotes/origin/3.2
-remotes/origin/4.1
-remotes/origin/4.1_TROFFEEhack
-remotes/origin/4.1_aero_m7
-...
-</pre></div>
-</div>
-<p>Checking out a specific branch (e.g., the <code class="docutils literal notranslate"><span class="pre">ruisdael</span></code> branch) is done via</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;newname&gt;<span class="w"> </span>remotes/origin/ruisdael
-</pre></div>
-</div>
-<section id="planning-on-coding-yourself-in-dales">
-<h3>Planning on coding yourself in DALES?<a class="headerlink" href="#planning-on-coding-yourself-in-dales" title="Link to this heading">#</a></h3>
-<p>If you plan to change parts of the code and want to keep track of your changes, it may be worthwhile to use your personal Github account and first fork the main repository. The steps to get the code on your system are then slightly different.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;your_account&gt;/dales.git
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/dalesteam/dales.git
-
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;YOUR NAME&quot;</span>
-git<span class="w"> </span>config<span class="w"> </span>checkout.defaultRemote<span class="w"> </span>origin
-
-git<span class="w"> </span>fetch<span class="w"> </span>--all
-
-git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>origin/main
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This option will checkout the code in your current directory, <em>without</em> first making a separate <code class="docutils literal notranslate"><span class="pre">dales</span></code> destination directory.</p>
-</div>
-</section>
+<p>To use ncview on windows you might need to download VcXsrv, and on OSX you need XQuartz.</p>
 </section>
 </section>
 
@@ -573,7 +522,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Compilation of DALES</p>
+        <p class="prev-next-title">Downloading the code</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -595,10 +544,6 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-libraries-packages">Optional libraries/packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-code">Downloading the code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-on-coding-yourself-in-dales">Planning on coding yourself in DALES?</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
