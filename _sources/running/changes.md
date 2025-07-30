@@ -31,6 +31,26 @@ height         nr      qr
 ...
 ```
 
+### Microphysics
+
+* The namelist for the full Seifert-Beheng microphysics scheme (`NAMBULKMICRO3`) has been merged with the existing namelist for microphysics (`NAMMICROPHYSICS`).
+* The variable `Nc0` has been removed from the namelist `NAMBULKMICRO3`. Users should instead provide a value for `Nc_0` (mind the underscore!) in `NAMMICROPHYSICS`.
+* `modbulkmicrostat` is slowly being replaced. To get per-process statistics for the warm bulk scheme (option `imicro=2`), remove the `NAMBULKMICROSTAT` namelist from your namoptions file and add the following:
+
+```
+&NAMMICROPHYSICS
+imicro = 2
+lstat = .true. ! Enable per-process statistics
+... other settings
+/
+
+&NAMOUT1D
+lstat  = .true. ! Enable profiles output
+dtav   = 60     ! Sampling interval
+timeav = 600    ! Averaging interval
+/
+```
+
 ## Other major changes
 
 * GPU support with OpenACC (see section [](sec:GPU))

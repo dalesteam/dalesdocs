@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -423,6 +423,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incompatibilities">Incompatibilities</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-variables">Scalar variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microphysics">Microphysics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-major-changes">Other major changes</a></li>
@@ -465,6 +466,27 @@ This is a valid scalar input file:</p></li>
 <span class="mf">6.0000E+001</span>     <span class="mi">0</span>       <span class="mi">0</span>
 <span class="mf">1.0000E+002</span>     <span class="mi">0</span>       <span class="mi">0</span>
 <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="microphysics">
+<h3>Microphysics<a class="headerlink" href="#microphysics" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The namelist for the full Seifert-Beheng microphysics scheme (<code class="docutils literal notranslate"><span class="pre">NAMBULKMICRO3</span></code>) has been merged with the existing namelist for microphysics (<code class="docutils literal notranslate"><span class="pre">NAMMICROPHYSICS</span></code>).</p></li>
+<li><p>The variable <code class="docutils literal notranslate"><span class="pre">Nc0</span></code> has been removed from the namelist <code class="docutils literal notranslate"><span class="pre">NAMBULKMICRO3</span></code>. Users should instead provide a value for <code class="docutils literal notranslate"><span class="pre">Nc_0</span></code> (mind the underscore!) in <code class="docutils literal notranslate"><span class="pre">NAMMICROPHYSICS</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modbulkmicrostat</span></code> is slowly being replaced. To get per-process statistics for the warm bulk scheme (option <code class="docutils literal notranslate"><span class="pre">imicro=2</span></code>), remove the <code class="docutils literal notranslate"><span class="pre">NAMBULKMICROSTAT</span></code> namelist from your namoptions file and add the following:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&amp;NAMMICROPHYSICS
+imicro = 2
+lstat = .true. ! Enable per-process statistics
+... other settings
+/
+
+&amp;NAMOUT1D
+lstat  = .true. ! Enable profiles output
+dtav   = 60     ! Sampling interval
+timeav = 600    ! Averaging interval
+/
 </pre></div>
 </div>
 </section>
@@ -545,6 +567,7 @@ This is a valid scalar input file:</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incompatibilities">Incompatibilities</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-variables">Scalar variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microphysics">Microphysics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-major-changes">Other major changes</a></li>
