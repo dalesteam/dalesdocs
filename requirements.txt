@@ -1,4 +1,4 @@
-jupyter-book
+jupyter-book<2
 f90nml
 netCDF4
 numpy
