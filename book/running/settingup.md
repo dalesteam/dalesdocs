@@ -16,10 +16,13 @@ These requirements can be easily installed on most UNIX-based systems via a pack
 ```shell
 sudo apt install cmake
 ```
+See also  [](sec:compilation:systems) for step-by-step installation instructions on different systems. For example detailed instructions for Ubuntu are given in  [](sec:compilation:debian).
+
 On MacOS, a standard way to install packages is via `homebrew`
 ```shell
 brew install cmake
 ```
+See more OSX instructions in the [Wiki](https://github.com/dalesteam/dales/wiki/Installation-notes#macos).
 
 When using high-performance conputing (HPC) infrastructures, these requirements may already be pre-installed. Many HPC infrastructures employ sets of software modules in which case the requiments often have to be loaded in. A list of available modules on the system is then given by the following command:
 ``` shell

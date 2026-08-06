@@ -22,6 +22,10 @@ parts:
       # - file: running/ibm.ipynb
       # - file: running/openbcs.ipynb
       - file: running/gpu.md
+      - file: running/quirks.md
+  - caption: Hints for new DALES developers
+    chapters:
+      - file: developers/developers.md
   - caption:  Recent publications using DALES
     chapters:
       - file: running/papers.ipynb

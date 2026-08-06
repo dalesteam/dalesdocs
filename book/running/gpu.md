@@ -1,6 +1,6 @@
 (sec:gpu)=
 # Using the GPU
-DALES now has the option to use graphics processing units (GPU's) to accelerate computations. 
+DALES now has the option to use graphics processing units (GPU's) to accelerate computations.
 
 ## Prerequisites
 
@@ -74,4 +74,77 @@ If you have compiled DALES succesfully with OpenACC enabled, running it is not v
 mpirun -np N <path-to-DALES> <path-to-namoptions>
 ```
 
-where N should match the number of GPU's you want to use. 
+where N should match the number of GPU's you want to use.
+
+
+
+# Compiling on specific GPU systems
+
+https://doc.dhpc.tudelft.nl/delftblue/ (requires login)
+
+## DelftBlue GPU (2026)
+
+### Compile netcdf-fortran
+
+```
+module load nvhpc/25.7
+module load netcdf-c/4.9.2
+module load cmake/3.30.5
+module load hdf5/1.14.3
+
+git clone https://github.com/unidata/netcdf-fortran
+cd netcdf-fortran
+
+cmake .. -DCMAKE_INSTALL_PREFIX=$HOME
+make -j 4
+make install
+```
+
+### Compile DALES for GPU (dev branch, single precision)
+```
+module load nvhpc/25.7
+module load netcdf-c/4.9.2
+module load hdf5/1.14.3
+module load cmake/3.30.5
+
+git clone https://github.com/dalesteam/dales
+git checkout dev
+git submodule init
+git submodule update
+
+cd dales
+mkdir build-gpu-sp
+cd build-gpu-sp
+
+cmake .. -DENABLE_FP32_POIS=True -DENABLE_FP32_FIELDS=True -DENABLE_ACC=True -DNetCDF_Fortran_ROOT=$HOME
+make -j 4
+```
+
+### Job script
+to be submitted in the directory where the simulation will run, with the input files already in place.
+
+```
+#!/bin/bash
+#SBATCH --job-name="dales"
+#SBATCH --partition=gpu-a100
+#SBATCH --time=1:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus-per-task=1
+#SBATCH --mem-per-cpu=8000M
+#SBATCH --account=research-ceg-grs
+
+# you may have to adapt the account line above,
+# according to your account and group status
+
+module load nvhpc/25.7
+module load netcdf-c/4.9.2
+#module load cmake/3.30.5
+module load hdf5/1.14.3
+
+DALES=$HOME/dales/build-gpu-sp/bin/dales
+
+srun --mpi=pmix -n 1 mpiexec -n 1 $DALES namoptions.001
+
+```
+Note: srun and mpiexec on the last line seem redundant, mpiexec seem required, uncertain about srun.
