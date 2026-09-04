@@ -196,8 +196,14 @@ make -j 8
 ```
 
 ### TU Delft VR-lab
+
+See also the [VR-lab manual](https://docs.vrlab.tudelft.nl/vrlab-user-doc/).
+
+#### Compilation
 ```
-ssh login03
+ssh login01
+# or login02
+
 module load dales.rc4
 module load cmake fftw netcdf-fortran
 
@@ -212,6 +218,29 @@ cd build
 cmake ..
 make -j 8
 ```
+
+#### Sample job script for VR-lab
+
+Put the following lines in a file named for example `dales.job`,
+in the same directory as your job files.
+```
+#!/bin/bash
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+
+# path to the DALES program you have compiled - adapt as needed
+DALES=$HOME/dales/build/bin/dales
+
+mpiexec -n 1 $DALES namoptions.001
+```
+Submit the job with `sbatch dales.job`, the check the status of the job with `squeue`.
+
+`--nodes` and `--tasks-per-node` control how many processor cores are reserved for the job.
+The total number should match the number of MPI tasks launched, selected by the number after
+`mpiexec -n`. The number of tasks should also match `nprocx * nprocy` from the namelist.
+
+
 
 ### Fugaku (2026)
 

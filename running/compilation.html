@@ -479,7 +479,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delftblue-tudelft-hpc">Delftblue (TUDelft HPC)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snellius-dutch-national-system">Snellius (Dutch National system)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tu-delft-vr-lab">TU Delft VR-lab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tu-delft-vr-lab">TU Delft VR-lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation">Compilation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-job-script-for-vr-lab">Sample job script for VR-lab</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fugaku-2026">Fugaku (2026)</a></li>
 </ul>
 </li>
@@ -716,7 +720,12 @@ make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
 </section>
 <section id="tu-delft-vr-lab">
 <h3>TU Delft VR-lab<a class="headerlink" href="#tu-delft-vr-lab" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">login03</span>
+<p>See also the <a class="reference external" href="https://docs.vrlab.tudelft.nl/vrlab-user-doc/">VR-lab manual</a>.</p>
+<section id="compilation">
+<h4>Compilation<a class="headerlink" href="#compilation" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">login01</span>
+<span class="c1"># or login02</span>
+
 <span class="n">module</span> <span class="n">load</span> <span class="n">dales</span><span class="o">.</span><span class="n">rc4</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">cmake</span> <span class="n">fftw</span> <span class="n">netcdf</span><span class="o">-</span><span class="n">fortran</span>
 
@@ -732,6 +741,27 @@ make<span class="w"> </span>-j<span class="w"> </span><span class="m">8</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">8</span>
 </pre></div>
 </div>
+</section>
+<section id="sample-job-script-for-vr-lab">
+<h4>Sample job script for VR-lab<a class="headerlink" href="#sample-job-script-for-vr-lab" title="Link to this heading">#</a></h4>
+<p>Put the following lines in a file named for example <code class="docutils literal notranslate"><span class="pre">dales.job</span></code>,
+in the same directory as your job files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+
+# path to the DALES program you have compiled - adapt as needed
+DALES=$HOME/dales/build/bin/dales
+
+mpiexec -n 1 $DALES namoptions.001
+</pre></div>
+</div>
+<p>Submit the job with <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">dales.job</span></code>, the check the status of the job with <code class="docutils literal notranslate"><span class="pre">squeue</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--nodes</span></code> and <code class="docutils literal notranslate"><span class="pre">--tasks-per-node</span></code> control how many processor cores are reserved for the job.
+The total number should match the number of MPI tasks launched, selected by the number after
+<code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span></code>. The number of tasks should also match <code class="docutils literal notranslate"><span class="pre">nprocx</span> <span class="pre">*</span> <span class="pre">nprocy</span></code> from the namelist.</p>
+</section>
 </section>
 <section id="fugaku-2026">
 <h3>Fugaku (2026)<a class="headerlink" href="#fugaku-2026" title="Link to this heading">#</a></h3>
@@ -842,7 +872,11 @@ and some flags for linking the hdf5 library.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delftblue-tudelft-hpc">Delftblue (TUDelft HPC)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snellius-dutch-national-system">Snellius (Dutch National system)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tu-delft-vr-lab">TU Delft VR-lab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tu-delft-vr-lab">TU Delft VR-lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation">Compilation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-job-script-for-vr-lab">Sample job script for VR-lab</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fugaku-2026">Fugaku (2026)</a></li>
 </ul>
 </li>
