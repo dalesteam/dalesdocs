@@ -243,8 +243,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="quirks.html">Quirks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hints for new DALES developers</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">For DALES developers</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../developers/git.html">Working with git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developers/developers.html">For new developers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
@@ -491,7 +492,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nc</span>
 
-<span class="n">tracers_nc</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;tracers.001.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tracers_nc</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">"tracers.001.nc"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -499,13 +500,13 @@
 <p>Next, we’ll create a dimension corresponding to the vertical levels. Tracers are defined at the full levels (cell centers), so the dimension we have to provide is <code class="docutils literal notranslate"><span class="pre">zt</span></code>. We don’t have to provide the actual values of the levels, since those have already been read from <code class="docutils literal notranslate"><span class="pre">init.001.nc</span></code>. This example is based on the benchmark RICO case, which uses 126 vertical levels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_dim</span> <span class="o">=</span> <span class="n">tracers_nc</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s2">&quot;zt&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">126</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_dim</span> <span class="o">=</span> <span class="n">tracers_nc</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s2">"zt"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">126</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tracers_nc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;netCDF4.Dataset&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'netCDF4.Dataset'&gt;
 root group (NETCDF4 data model, file format HDF5):
     dimensions(sizes): zt(126)
     variables(dimensions): 
@@ -520,13 +521,13 @@ root group (NETCDF4 data model, file format HDF5):
 <p>Now we can define our tracer. For this example, we make a tracer that represents carbon dioxide (CO2):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2</span> <span class="o">=</span> <span class="n">tracers_nc</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s2">&quot;co2&quot;</span><span class="p">,</span> <span class="s2">&quot;f8&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;zt&quot;</span><span class="p">,))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2</span> <span class="o">=</span> <span class="n">tracers_nc</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s2">"co2"</span><span class="p">,</span> <span class="s2">"f8"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"zt"</span><span class="p">,))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tracers_nc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;netCDF4.Dataset&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'netCDF4.Dataset'&gt;
 root group (NETCDF4 data model, file format HDF5):
     dimensions(sizes): zt(126)
     variables(dimensions): float64 co2(zt)
@@ -591,9 +592,9 @@ root group (NETCDF4 data model, file format HDF5):
 <p>Attributes can be set like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;carbon dioxide&quot;</span>
-<span class="n">co2</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;kg/kg&quot;</span>
-<span class="n">co2</span><span class="o">.</span><span class="n">molar_mass</span> <span class="o">=</span> <span class="s2">&quot;44.009&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">"carbon dioxide"</span>
+<span class="n">co2</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s2">"kg/kg"</span>
+<span class="n">co2</span><span class="o">.</span><span class="n">molar_mass</span> <span class="o">=</span> <span class="s2">"44.009"</span>
 <span class="n">co2</span><span class="o">.</span><span class="n">lemis</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">co2</span><span class="o">.</span><span class="n">lags</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -602,7 +603,7 @@ root group (NETCDF4 data model, file format HDF5):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;netCDF4.Variable&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'netCDF4.Variable'&gt;
 float64 co2(zt)
     long_name: carbon dioxide
     unit: kg/kg
@@ -637,9 +638,9 @@ dimensions:
 	zt = 126 ;
 variables:
 	double co2(zt) ;
-		co2:long_name = &quot;carbon dioxide&quot; ;
-		co2:unit = &quot;kg/kg&quot; ;
-		co2:molar_mass = &quot;44.009&quot; ;
+		co2:long_name = "carbon dioxide" ;
+		co2:unit = "kg/kg" ;
+		co2:molar_mass = "44.009" ;
 		co2:lemis = 1LL ;
 		co2:lags = 1LL ;
 data:

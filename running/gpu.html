@@ -243,8 +243,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="quirks.html">Quirks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hints for new DALES developers</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">For DALES developers</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../developers/git.html">Working with git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developers/developers.html">For new developers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
@@ -605,7 +606,7 @@ make -j 4
 <h3>Job script<a class="headerlink" href="#job-script" title="Link to this heading">#</a></h3>
 <p>to be submitted in the directory where the simulation will run, with the input files already in place.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
-#SBATCH --job-name=&quot;dales&quot;
+#SBATCH --job-name="dales"
 #SBATCH --partition=gpu-a100
 #SBATCH --time=1:00:00
 #SBATCH --ntasks=1

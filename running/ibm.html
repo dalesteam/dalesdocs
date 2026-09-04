@@ -245,8 +245,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="quirks.html">Quirks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hints for new DALES developers</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">For DALES developers</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../developers/git.html">Working with git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developers/developers.html">For new developers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
@@ -537,9 +538,9 @@
 
 <span class="c1">##### SPECIFY GENERAL SETTINGS #####</span>
 
-<span class="n">iexpnr</span> <span class="o">=</span> <span class="s1">&#39;001&#39;</span> 
-<span class="n">building_file</span> <span class="o">=</span> <span class="s1">&#39;Buildings.obj&#39;</span>
-<span class="n">terrain_file</span>  <span class="o">=</span> <span class="s1">&#39;Terrain.obj&#39;</span>
+<span class="n">iexpnr</span> <span class="o">=</span> <span class="s1">'001'</span> 
+<span class="n">building_file</span> <span class="o">=</span> <span class="s1">'Buildings.obj'</span>
+<span class="n">terrain_file</span>  <span class="o">=</span> <span class="s1">'Terrain.obj'</span>
 
 <span class="n">dx</span> <span class="o">=</span> <span class="mf">5.</span>     <span class="c1"># horizontal grid spacing in meters</span>
 <span class="n">Nx</span> <span class="o">=</span> <span class="mi">256</span>    <span class="c1"># number of grid cells in x-direction</span>
@@ -569,7 +570,7 @@
 <span class="n">mesh2</span><span class="o">.</span><span class="n">vertices</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mesh2</span><span class="o">.</span><span class="n">vertices</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">origin_shift</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Combine building and terrain meshes in one mesh</span>
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">trimesh</span><span class="o">.</span><span class="n">boolean</span><span class="o">.</span><span class="n">union</span><span class="p">([</span><span class="n">mesh1</span><span class="p">,</span> <span class="n">mesh2</span><span class="p">],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;blender&#39;</span><span class="p">,</span> <span class="n">check_volume</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">trimesh</span><span class="o">.</span><span class="n">boolean</span><span class="o">.</span><span class="n">union</span><span class="p">([</span><span class="n">mesh1</span><span class="p">,</span> <span class="n">mesh2</span><span class="p">],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'blender'</span><span class="p">,</span> <span class="n">check_volume</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Voxelize the OBJ-mesh to computational grid spacing dx</span>
 <span class="n">voxgrid</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">voxelized</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">hollow</span><span class="p">()</span>
@@ -582,7 +583,7 @@
 <span class="c1"># Prepare arrays for obstacle heights. Mind the orientation:</span>
 <span class="c1">#   Voxgrid structure orders data as increasing x, then y (xy-ordering); start bottom-left</span>
 <span class="c1">#   IBM input file should however start at top-left (largest y, smallest x; row-major) </span>
-<span class="c1">#   Column indices &#39;j&#39; correspond to the x-dimension and row indices &#39;i&#39; to y-dimension </span>
+<span class="c1">#   Column indices 'j' correspond to the x-dimension and row indices 'i' to y-dimension </span>
 <span class="c1">#   DALES itself corrects for this again by reading the file upside-down</span>
 <span class="c1">#   There is potential to correct for this code-wise (which has not been done yet)</span>
 
@@ -601,30 +602,30 @@
         <span class="n">data_les</span><span class="p">[</span><span class="n">ii_pos</span><span class="p">,</span><span class="n">jj_pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">zhei</span> 
         <span class="n">mask_2d</span> <span class="p">[</span><span class="n">ii_pos</span><span class="p">,</span><span class="n">jj_pos</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">zhei</span> <span class="o">&gt;=</span> <span class="n">dx</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum height in area: </span><span class="si">{:&gt;3.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data_les</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Maximum height in area: </span><span class="si">{:&gt;3.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data_les</span><span class="p">)))</span>
 
 <span class="c1">##### WRITE IBM INPUT FILE #####</span>
 <span class="n">do</span> <span class="o">=</span> <span class="n">data_les</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="c1"># first meshgridded and then converted to list in right direction</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ibm.inp.&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">iexpnr</span><span class="p">),</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'ibm.inp.'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">iexpnr</span><span class="p">),</span><span class="s1">'w'</span><span class="p">)</span>
 
 <span class="c1"># Ensure 7 lines of text heade</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# EXPERIMENT: ibm example)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# Horizontal grid points Nx = </span><span class="si">{:&gt;4d}</span><span class="s1">, Ny = </span><span class="si">{:&gt;4d}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span><span class="n">Ny</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# Horizontal grid size Delta x = </span><span class="si">{:&gt;6.2f}</span><span class="s1">, Delta y = </span><span class="si">{:&gt;6.2f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dx</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'# EXPERIMENT: ibm example)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'# Horizontal grid points Nx = </span><span class="si">{:&gt;4d}</span><span class="s1">, Ny = </span><span class="si">{:&gt;4d}</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span><span class="n">Ny</span><span class="p">))</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'# Horizontal grid size Delta x = </span><span class="si">{:&gt;6.2f}</span><span class="s1">, Delta y = </span><span class="si">{:&gt;6.2f}</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dx</span><span class="p">))</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'#</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'#</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'#</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'#</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">nn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">do</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&gt;6.1f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">do</span><span class="p">[</span><span class="n">nn</span><span class="p">])</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:&gt;6.1f}</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">do</span><span class="p">[</span><span class="n">nn</span><span class="p">])</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
 
 <span class="c1">##### OPTIONAL: PLOT VOXELIZED BUILDINGS #####</span>
-<span class="n">x_mesh</span><span class="p">,</span> <span class="n">y_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xh_les</span><span class="p">,</span><span class="n">yh_les</span><span class="p">,</span><span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">)</span> 
+<span class="n">x_mesh</span><span class="p">,</span> <span class="n">y_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xh_les</span><span class="p">,</span><span class="n">yh_les</span><span class="p">,</span><span class="n">indexing</span><span class="o">=</span><span class="s1">'xy'</span><span class="p">)</span> 
 <span class="n">y_mesh</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">y_mesh</span><span class="p">)</span>
 
 <span class="n">xp</span> <span class="o">=</span> <span class="n">x_mesh</span><span class="p">[</span><span class="n">mask_2d</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>   <span class="c1"># like flatten, make continuous vector of xdata</span>
@@ -633,12 +634,12 @@
 <span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">zp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar3d</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">b0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">zp</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">'3d'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar3d</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">b0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">zp</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="s2">"True"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim3d</span><span class="p">(</span><span class="n">origin_les</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">origin_les</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="o">*</span><span class="n">Nx</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim3d</span><span class="p">(</span><span class="n">origin_les</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">origin_les</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="o">*</span><span class="n">Ny</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -682,11 +683,11 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">open3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">o3d</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">laspy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lp</span>      <span class="c1"># &lt;-- this package should be installed with laz backend</span>
-                        <span class="c1"># pip3 install &quot;laspy[lazrs,laszip]&quot;</span>
+                        <span class="c1"># pip3 install "laspy[lazrs,laszip]"</span>
 
 <span class="c1">##### SPECIFY INPUT FILE AND VOXEL SIZE (=GRID SIZE) #####</span>
 
-<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;37EN2_11.LAZ&#39;</span>   <span class="c1"># AHN3 Wippolder area in Delft, downloaded from GeoTiles </span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">'37EN2_11.LAZ'</span>   <span class="c1"># AHN3 Wippolder area in Delft, downloaded from GeoTiles </span>
 <span class="n">dx</span>   <span class="o">=</span> <span class="mf">10.</span>
 
 <span class="c1">##### PROCESS LIDAR POINT CLOUDS #####</span>
@@ -751,7 +752,7 @@
 <span class="c1"># vox_mesh.scale(dx, [0, 0, 0])</span>
 <span class="c1"># vox_mesh.translate(voxel_grid.origin, relative=True)</span>
 
-<span class="c1"># o3d.io.write_triangle_mesh(file+&quot;voxel_mesh_h.ply&quot;, vox_mesh)</span>
+<span class="c1"># o3d.io.write_triangle_mesh(file+"voxel_mesh_h.ply", vox_mesh)</span>
 </pre></div>
 </div>
 <p>From this point, writing of the IBM input file is the same as in the earlier example.</p>

@@ -65,7 +65,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="List of publications using DALES" href="../running/papers.html" />
-    <link rel="prev" title="Quirks" href="../running/quirks.html" />
+    <link rel="prev" title="Working with git" href="git.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -243,8 +243,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../running/quirks.html">Quirks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hints for new DALES developers</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">For DALES developers</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="git.html">Working with git</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">For new developers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
@@ -522,7 +523,8 @@ of when it should run, <code class="docutils literal notranslate"><span class="p
 <h2>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>DALES runs that are even slightly different will diverge and become
-more and more different over time.</p></li>
+more and more different over time. This is typical for simulating chaotic systems,
+and means testing can be difficult.</p></li>
 <li><p>Parallel runs, especially with more than one node are not bitwise
 reproducible, because MPI does not guarantee bitwise reproducibility
 (probably the reduce operations which can happen in different
@@ -572,12 +574,12 @@ one does a clean build.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../running/quirks.html"
+       href="git.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Quirks</p>
+        <p class="prev-next-title">Working with git</p>
       </div>
     </a>
     <a class="right-next"

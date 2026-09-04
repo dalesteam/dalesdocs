@@ -243,8 +243,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="quirks.html">Quirks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hints for new DALES developers</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">For DALES developers</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../developers/git.html">Working with git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developers/developers.html">For new developers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recent publications using DALES</span></p>
@@ -504,6 +505,12 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;<span class="w"> </span>&lt;currentpath&gt;<span class="w"> </span>%<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dalesteam/dales.git
 </pre></div>
 </div>
+<p>If you have set up public key authentication with GitHub, you can instead do</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:dalesteam/dales.git
+</pre></div>
+</div>
+<p>you will need this in case you want to make changes and share them on GitHub.
+See also section <a class="reference internal" href="../developers/git.html#sec-git"><span class="std std-ref">Working with git</span></a>.</p>
 <p>Here, a new directory called <code class="docutils literal notranslate"><span class="pre">dales</span></code> should have appeared. By default, the latest main branch is checked out inside this directory (denoted by the <code class="docutils literal notranslate"><span class="pre">*</span></code>). This can be confirmed by doing the following</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>dales
 git<span class="w"> </span>branch
@@ -543,7 +550,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>update
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/&lt;your_account&gt;/dales.git
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/dalesteam/dales.git
 
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;YOUR NAME&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"YOUR NAME"</span>
 git<span class="w"> </span>config<span class="w"> </span>checkout.defaultRemote<span class="w"> </span>origin
 
 git<span class="w"> </span>fetch<span class="w"> </span>--all
@@ -744,7 +751,7 @@ and some flags for linking the hdf5 library.</p>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
 
-<span class="n">FC</span><span class="o">=</span><span class="n">mpifrtpx</span> <span class="n">CC</span><span class="o">=</span><span class="n">mpifccpx</span> <span class="n">cmake</span> <span class="o">../</span><span class="n">dales</span> <span class="o">-</span><span class="n">DENABLE_FP32_FIELDS</span><span class="o">=</span><span class="kc">True</span>  <span class="o">-</span><span class="n">DENABLE_FP32_POIS</span><span class="o">=</span><span class="kc">True</span>   <span class="o">-</span><span class="n">DCMAKE_Fortran_FLAGS</span><span class="o">=</span><span class="s2">&quot;-L/vol0004/apps/oss/spack-v1.0.1/opt/spack/linux-a64fx/hdf5-1.14.6-mngsrojzjw54lchhyi4d3ujre3r55yef/lib -lhdf5 -lhdf5_hl&quot;</span>
+<span class="n">FC</span><span class="o">=</span><span class="n">mpifrtpx</span> <span class="n">CC</span><span class="o">=</span><span class="n">mpifccpx</span> <span class="n">cmake</span> <span class="o">../</span><span class="n">dales</span> <span class="o">-</span><span class="n">DENABLE_FP32_FIELDS</span><span class="o">=</span><span class="kc">True</span>  <span class="o">-</span><span class="n">DENABLE_FP32_POIS</span><span class="o">=</span><span class="kc">True</span>   <span class="o">-</span><span class="n">DCMAKE_Fortran_FLAGS</span><span class="o">=</span><span class="s2">"-L/vol0004/apps/oss/spack-v1.0.1/opt/spack/linux-a64fx/hdf5-1.14.6-mngsrojzjw54lchhyi4d3ujre3r55yef/lib -lhdf5 -lhdf5_hl"</span>
 
 <span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">4</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">tee</span> <span class="n">compilation</span><span class="o">-</span><span class="n">log</span><span class="o">.</span><span class="n">txt</span>
 
