@@ -41,7 +41,8 @@ The "proper" grid points are in the range (2:i1, 2:j1, 1:kmax), and ih or jh gho
 ## Reproducibility
 
 * DALES runs that are even slightly different will diverge and become
-  more and more different over time.
+  more and more different over time. This is typical for simulating chaotic systems,
+  and means testing can be difficult.
   
 * Parallel runs, especially with more than one node are not bitwise
   reproducible, because MPI does not guarantee bitwise reproducibility

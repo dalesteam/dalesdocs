@@ -7,6 +7,13 @@ The next step after installing these libraries and packages is to get the DALES 
 <username> <currentpath> % git clone https://github.com/dalesteam/dales.git
 ```
 
+If you have set up public key authentication with GitHub, you can instead do
+``` shell
+git clone git@github.com:dalesteam/dales.git
+```
+you will need this in case you want to make changes and share them on GitHub.
+See also section [](sec:git).
+
 Here, a new directory called `dales` should have appeared. By default, the latest main branch is checked out inside this directory (denoted by the `*`). This can be confirmed by doing the following
 ``` shell
 cd dales

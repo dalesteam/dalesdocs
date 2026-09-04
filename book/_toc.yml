@@ -23,8 +23,9 @@ parts:
       # - file: running/openbcs.ipynb
       - file: running/gpu.md
       - file: running/quirks.md
-  - caption: Hints for new DALES developers
+  - caption: For DALES developers
     chapters:
+      - file: developers/git.md
       - file: developers/developers.md
   - caption:  Recent publications using DALES
     chapters:
