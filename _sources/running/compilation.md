@@ -119,6 +119,26 @@ To use HYPRE or FFTW, the library needs to both be enabled at compilation and se
 ```{hint}
 `-DPOIS_PRECISION=32` and `-DUSE_HYPRE=True` can be used together, but HYPRE is 64-bit only, so only use this, if it is really what you want.
 ```
+
+(sec:compilation:single)=
+## Single precision
+
+Compiling DALES with single precision floating point numbers can
+result in a substantial saving of computing time and memory. Often the
+savings are around 40% in both computing time and memory. In principle
+the calculations are less precise. In practice it's hard to tell the
+difference in results.
+
+For very large grids (>10 000 grid points per horizontal direction)
+the 32-bit Poisson solver has been unstable.
+
+The most common single-precision configuration is to switch both the
+3D fields and the Poisson solver to single precision:
+
+``` shell cmake
+../dales -DENABLE_FP32_FIELDS=True -DENABLE_FP32_POIS=True
+```
+
 (sec:compilation:systems)=
 ## Compilation on specific systems
 

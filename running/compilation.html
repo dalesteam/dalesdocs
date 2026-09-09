@@ -475,6 +475,7 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-of-dales">Compilation of DALES</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-compilation">Generic compilation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-options">Compilation options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-precision">Single precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-on-specific-systems">Compilation on specific systems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delftblue-tudelft-hpc">Delftblue (TUDelft HPC)</a></li>
@@ -644,6 +645,21 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p><code class="docutils literal notranslate"><span class="pre">-DPOIS_PRECISION=32</span></code> and <code class="docutils literal notranslate"><span class="pre">-DUSE_HYPRE=True</span></code> can be used together, but HYPRE is 64-bit only, so only use this, if it is really what you want.</p>
+</div>
+</section>
+<section id="single-precision">
+<span id="sec-compilation-single"></span><h2>Single precision<a class="headerlink" href="#single-precision" title="Link to this heading">#</a></h2>
+<p>Compiling DALES with single precision floating point numbers can
+result in a substantial saving of computing time and memory. Often the
+savings are around 40% in both computing time and memory. In principle
+the calculations are less precise. In practice it’s hard to tell the
+difference in results.</p>
+<p>For very large grids (&gt;10 000 grid points per horizontal direction)
+the 32-bit Poisson solver has been unstable.</p>
+<p>The most common single-precision configuration is to switch both the
+3D fields and the Poisson solver to single precision:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>../dales<span class="w"> </span>-DENABLE_FP32_FIELDS<span class="o">=</span>True<span class="w"> </span>-DENABLE_FP32_POIS<span class="o">=</span>True
+</pre></div>
 </div>
 </section>
 <section id="compilation-on-specific-systems">
@@ -868,6 +884,7 @@ and some flags for linking the hdf5 library.</p>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-of-dales">Compilation of DALES</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-compilation">Generic compilation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-options">Compilation options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-precision">Single precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-on-specific-systems">Compilation on specific systems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delftblue-tudelft-hpc">Delftblue (TUDelft HPC)</a></li>
