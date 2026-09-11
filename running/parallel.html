@@ -64,6 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using the GPU" href="gpu.html" />
+    <link rel="prev" title="Immersed Boundary Method (IBM)" href="ibm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -161,8 +163,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -232,9 +232,10 @@
 <li class="toctree-l1"><a class="reference internal" href="basic_namoptions.html">Basic Namoptions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced DALES options</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tracers.html">Running a case with tracers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ibm.html">Immersed Boundary Method (IBM)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Parallelization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu.html">Using the GPU</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="quirks.html">Quirks</a></li>
@@ -483,7 +484,7 @@ On a cluster you may want submit a job script instead.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">nprocx</span></code> must divide <code class="docutils literal notranslate"><span class="pre">itot</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nprocy</span></code> must divide <code class="docutils literal notranslate"><span class="pre">jtot</span></code></p></li>
 <li><p>a reasonable number of grid rows and columns per task (<code class="docutils literal notranslate"><span class="pre">imax</span> <span class="pre">=</span> <span class="pre">itot/nprocx</span></code> and <code class="docutils literal notranslate"><span class="pre">jmax</span> <span class="pre">=</span> <span class="pre">jtot/nprocy</span></code>) is around 32-64.</p></li>
-<li><p>the Fourier-transform-based Poisson solver works best (fastest) when the total grid sizes (<code class="docutils literal notranslate"><span class="pre">itot</span></code>, <code class="docutils literal notranslate"><span class="pre">jtot</span></code>) factorize into powers of small numbers, e.g. 2<strong>n * 3</strong>m.</p></li>
+<li><p>the Fourier-transform-based Poisson solver works best (fastest) when the total grid sizes (<code class="docutils literal notranslate"><span class="pre">itot</span></code>, <code class="docutils literal notranslate"><span class="pre">jtot</span></code>) factorize into powers of small numbers, e.g. <code class="docutils literal notranslate"><span class="pre">2**n</span> <span class="pre">*</span> <span class="pre">3**m</span></code>.</p></li>
 <li><p>it seems square tiles are efficient, or tiles that are
 longer along x than y, perhaps up to two times longer.</p></li>
 </ul>
@@ -494,12 +495,12 @@ the <code class="docutils literal notranslate"><span class="pre">total_number_of
 <li><p>it’s often efficient if <code class="docutils literal notranslate"><span class="pre">nprocx</span></code> divides the number of cores per node,
 i.e. an integer number of tile rows fit on one node. This means that the
 communication in the x direction is always within a node.</p></li>
-<li><p>often the number of cores in a node is of the form 2<strong>n * 3</strong>m, where
+<li><p>often the number of cores in a node is of the form <code class="docutils literal notranslate"><span class="pre">2**n</span> <span class="pre">*</span> <span class="pre">3**m</span></code>, where
 m is small, e.g. 48, 128, 192.
-We have had good experiences with domain sizes (<code class="docutils literal notranslate"><span class="pre">itot</span></code>, <code class="docutils literal notranslate"><span class="pre">jtot</span></code>) that are 2<strong>n or 3*2</strong>n.</p></li>
+We have had good experiences with domain sizes (<code class="docutils literal notranslate"><span class="pre">itot</span></code>, <code class="docutils literal notranslate"><span class="pre">jtot</span></code>) that are <code class="docutils literal notranslate"><span class="pre">2**n</span></code> or <code class="docutils literal notranslate"><span class="pre">3*2**n</span></code>.</p></li>
 </ul>
 <p>To increase speed and to save memory, also consider running in
-single-precision mode, see <a class="reference internal" href="compilation.html#sec-compilation-single"><span class="std std-ref">Single precision</span></a>=</p>
+single-precision mode, see <a class="reference internal" href="compilation.html#sec-compilation-single"><span class="std std-ref">Single precision</span></a></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -532,6 +533,24 @@ single-precision mode, see <a class="reference internal" href="compilation.html#
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="ibm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Immersed Boundary Method (IBM)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gpu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using the GPU</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
