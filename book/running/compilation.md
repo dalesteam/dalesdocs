@@ -95,7 +95,7 @@ make -j 4
 ```
 Compilation of the code may be sped up using the `-j <nprocs>` specifier, with `nprocs` being the amount of parallel processes (4 to 8 is usually a good choice). After successfull compilation, the executable `dales` is located in the subdirectory `bin/`.
 
-
+(sec:compilation:options)=
 ## Compilation options
 It is possible to specify optional features at the compilation stage of the model. These optional features can be activated by adding them as specifyers to the cmake command. CMake options are specified as `-D<option>=<value>`. For example:
 ``` shell
@@ -167,6 +167,49 @@ cd build
 cmake ..
 make -j 4
 ```
+
+### MacOS
+
+Install [homebrew](https://brew.sh/). Do check if you MacOS version is supported.
+
+```
+brew install gcc make cmake open-mpi netcdf-fortran git fftw
+```
+
+Test if `gfortran --version` and `mpif90 --version` work.
+
+
+Optional, for data viewing and processing:
+```
+brew install ncview cdo
+```
+
+for ncview to work, install [xquartz](https://www.xquartz.org/), and
+start any graphics application through the xquartz-terminal instead of
+the regular terminal.
+
+If you have anaconda installed and activated, deactivate it.
+Anaconda is present if the terminal prompt starts with `(base)`.
+If anaconda is active, it tends to interfere with the DALES compilation.
+```
+conda deactivate
+```
+After this preparation, the regular DALES compilation steps should work:
+
+```
+git clone https://github.com/dalesteam/dales.git
+cd dales
+
+git checkout dev
+git submodule init
+git submodule update
+
+mkdir build
+cd build
+cmake ..
+make -j 4
+```
+
 
 
 ### Delftblue (TUDelft HPC)
