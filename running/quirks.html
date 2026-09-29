@@ -465,6 +465,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-failiure">Compilation failiure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crash-or-segmentation-fault">Crash or segmentation fault</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#various-netcdf-errors">Various netCDF errors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-fftw-plan-creation-failed">STOP FFTW plan creation failed</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-compiler-error-with-ifort-19-0-5-281-20190815">Internal compiler error with ifort 19.0.5.281 20190815</a></li>
@@ -486,19 +488,46 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quirks">
 <h1>Quirks<a class="headerlink" href="#quirks" title="Link to this heading">#</a></h1>
-<p>A collection of problems or unexpected behaviour. Pure bugs in DALES should be filed as github issues instead.</p>
+<p>A collection of problems or unexpected behaviour. Pure bugs in DALES
+should be filed as github issues instead.</p>
+<section id="compilation-failiure">
+<h2>Compilation failiure<a class="headerlink" href="#compilation-failiure" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Possibly the environment is too old. gfortran 8 is too old. Ubuntu
+20 and newer are known to work. Ubuntu 20 has has gfortran 9.4.0.</p></li>
+<li><p>Failiure at the linking stage.
+Deactivate anaconda: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>. This is often seen on macs.</p></li>
+</ul>
+</section>
+<section id="crash-or-segmentation-fault">
+<h2>Crash or segmentation fault<a class="headerlink" href="#crash-or-segmentation-fault" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Try <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-s</span></code> to see the current stack size limit, then
+run <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-s</span> <span class="pre">unlimited</span></code> in the terminal before launching DALES
+or in the job script to remove any limit.
+The error happens when DALES tries to allocate too large arrays on the
+stack. In principle we try to explicitly allocate large arrays instead
+of placing them on the stack to avoid this problem.</p></li>
+<li><p>try a <a class="reference internal" href="compilation.html#sec-compilation-options"><span class="std std-ref">debug build</span></a>.</p></li>
+</ul>
+</section>
 <section id="various-netcdf-errors">
 <h2>Various netCDF errors<a class="headerlink" href="#various-netcdf-errors" title="Link to this heading">#</a></h2>
-<p>these are often caused by netCDF files from a previous run being left in the case directory.
-In particular if the domain or tile size has been changed since the previous run, it’s best to delete any old netcdf output.
-Also if DALES crashed, the netCDF files may be left in an unusable state.</p>
+<p>these are often caused by netCDF files from a previous run being left
+in the case directory. In particular if the domain or tile size has
+been changed since the previous run, it’s best to delete any old
+netcdf output.  Also if DALES crashed, the netCDF files may be left in
+an unusable state.</p>
 </section>
 <section id="stop-fftw-plan-creation-failed">
 <h2>STOP FFTW plan creation failed<a class="headerlink" href="#stop-fftw-plan-creation-failed" title="Link to this heading">#</a></h2>
-<p>This error message is generally caused by linking to the Intel MKL library instead of FFTW.
-MKL pretends to be compatible but is not, in particular it does not support the advanced plan creation interface used in DALES.
-To see the libraries linked to your DALES program, run <code class="docutils literal notranslate"><span class="pre">ldd</span> <span class="pre">path/to/your/dales</span></code>, and look for mkl libraries being mentioned.
-The CMake files supplied with DALES should discourage the use of MKL as an FFTW substitute by default (from version 5.0 on).</p>
+<p>This error message is generally caused by linking to the Intel MKL
+library instead of FFTW.  MKL pretends to be compatible but is not, in
+particular it does not support the advanced plan creation interface
+used in DALES.  To see the libraries linked to your DALES program, run
+<code class="docutils literal notranslate"><span class="pre">ldd</span> <span class="pre">path/to/your/dales</span></code>, and look for mkl libraries being mentioned.
+The CMake files supplied with DALES should discourage the use of MKL
+as an FFTW substitute by default (from version 5.0 on).</p>
 </section>
 <section id="internal-compiler-error-with-ifort-19-0-5-281-20190815">
 <h2>Internal compiler error with ifort 19.0.5.281 20190815<a class="headerlink" href="#internal-compiler-error-with-ifort-19-0-5-281-20190815" title="Link to this heading">#</a></h2>
@@ -513,8 +542,8 @@ Changing <code class="docutils literal notranslate"><span class="pre">-O3</span>
 <span class="mi">20000_28030</span>
 
 
-<span class="n">catastrophic</span> <span class="n">error</span><span class="p">:</span> <span class="o">**</span><span class="n">Internal</span> <span class="n">compiler</span> <span class="n">error</span><span class="p">:</span> <span class="n">internal</span> <span class="n">abort</span><span class="o">**</span> <span class="n">Please</span> <span class="n">report</span> 
-<span class="n">this</span> <span class="n">error</span> <span class="n">along</span> <span class="k">with</span> <span class="n">the</span> <span class="n">circumstances</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">it</span> <span class="n">occurred</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">Software</span> <span class="n">Problem</span> <span class="n">Report</span><span class="o">.</span>  
+<span class="n">catastrophic</span> <span class="n">error</span><span class="p">:</span> <span class="o">**</span><span class="n">Internal</span> <span class="n">compiler</span> <span class="n">error</span><span class="p">:</span> <span class="n">internal</span> <span class="n">abort</span><span class="o">**</span> <span class="n">Please</span> <span class="n">report</span>
+<span class="n">this</span> <span class="n">error</span> <span class="n">along</span> <span class="k">with</span> <span class="n">the</span> <span class="n">circumstances</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">it</span> <span class="n">occurred</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">Software</span> <span class="n">Problem</span> <span class="n">Report</span><span class="o">.</span>
 <span class="n">Note</span><span class="p">:</span> <span class="n">File</span> <span class="ow">and</span> <span class="n">line</span> <span class="n">given</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">explicit</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">this</span> <span class="n">error</span><span class="o">.</span>
 <span class="n">compilation</span> <span class="n">aborted</span> <span class="k">for</span> <span class="o">/</span><span class="n">dss</span><span class="o">/</span><span class="n">dsshome1</span><span class="o">/</span><span class="mi">0</span><span class="n">F</span><span class="o">/</span><span class="n">di67mow</span><span class="o">/</span><span class="n">dales</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">modheterostats</span><span class="o">.</span><span class="n">f90</span> <span class="p">(</span><span class="n">code</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -522,17 +551,21 @@ Changing <code class="docutils literal notranslate"><span class="pre">-O3</span>
 </section>
 <section id="crash-with-openmpi-3-1-1">
 <h2>Crash with OpenMPI 3.1.1<a class="headerlink" href="#crash-with-openmpi-3-1-1" title="Link to this heading">#</a></h2>
-<p>On Lisa, runs with 16 cores on one node frequently crashed when compiled with the foss/2018b module set.
-This seems to be a bug in OpenMPI. With OpenMPI 3.1.3 the problem disappeared. The crash usually happened in <code class="docutils literal notranslate"><span class="pre">transpose_b</span></code> or <code class="docutils literal notranslate"><span class="pre">transpose_binv</span></code> in modpois.
-Such a bug is mentioned in the OpenMP <a class="reference external" href="https://www.open-mpi.org/source/new.php">release notes</a>, and
-<a class="reference external" href="https://github.com/open-mpi/ompi/issues/5375">this bug report</a>.</p>
+<p>On Lisa, runs with 16 cores on one node frequently crashed when
+compiled with the foss/2018b module set.  This seems to be a bug in
+OpenMPI. With OpenMPI 3.1.3 the problem disappeared. The crash usually
+happened in <code class="docutils literal notranslate"><span class="pre">transpose_b</span></code> or <code class="docutils literal notranslate"><span class="pre">transpose_binv</span></code> in modpois.  Such a bug
+is mentioned in the OpenMP <a class="reference external" href="https://www.open-mpi.org/source/new.php">release notes</a>, and <a class="reference external" href="https://github.com/open-mpi/ompi/issues/5375">this bug
+report</a>.</p>
 </section>
 <section id="cray-mpi-and-system-commands">
 <h2>Cray MPI and system() commands<a class="headerlink" href="#cray-mpi-and-system-commands" title="Link to this heading">#</a></h2>
-<p>Cray MPI is by default not compatible with programs that launch other programs with system().
-In Dales, at least some versions, system() is used to symlink init*<em>latest</em> files to the appropriate
-init* file. This caused crashes. A possible workaround is to call a function for creating the symlink,
-this is annoying because the syntax and support for this differs between Fortran compilers.</p>
+<p>Cray MPI is by default not compatible with programs that launch other
+programs with system().  In Dales, at least some versions, system() is
+used to symlink init*<em>latest</em> files to the appropriate init*
+file. This caused crashes. A possible workaround is to call a function
+for creating the symlink, this is annoying because the syntax and
+support for this differs between Fortran compilers.</p>
 </section>
 <section id="wrong-wallclock-time-measurement">
 <h2>Wrong wallclock time measurement<a class="headerlink" href="#wrong-wallclock-time-measurement" title="Link to this heading">#</a></h2>
@@ -545,16 +578,21 @@ Using a newer cmake solves this issue.</p>
 </section>
 <section id="odd-domain-size-and-poisson-solver">
 <h2>Odd domain size and Poisson solver<a class="headerlink" href="#odd-domain-size-and-poisson-solver" title="Link to this heading">#</a></h2>
-<p>The (old-built-in) FFT Poisson solver may not be correct if the domain size is odd.
-With odd sizes, there is a different element ordering in the output of the FFT,
-and the code seems to not take this into account.
-Test on the rico case, divergence diagnostics:
-divmax, divtot =    7.31E-10   1.60E-11 (rico, 145x144)
-divmax, divtot =    3.70E-17   2.28E-11 (rico, 144x144)</p>
-<p>divmax for odd sizes is significantly larger, which is a sign that the solution is less accurate.
-For now, odd domain sizes are not recommended. For future alternative Poisson solvers,
-we will aim to handle odd sizes correctly, rather than reproducing the current behavior.</p>
-<p>This problem should not be present for the FFTW-based solver, which is the default from DALES 5.0 on.</p>
+<p>The (old-built-in) FFT Poisson solver may not be correct if the domain
+size is odd.  With odd sizes, there is a different element ordering in
+the output of the FFT, and the code seems to not take this into
+account.  Test on the rico case, divergence diagnostics:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">divmax</span><span class="p">,</span> <span class="n">divtot</span> <span class="o">=</span>    <span class="mf">7.31E-10</span>   <span class="mf">1.60E-11</span> <span class="p">(</span><span class="n">rico</span><span class="p">,</span> <span class="mi">145</span><span class="n">x144</span><span class="p">)</span>
+<span class="n">divmax</span><span class="p">,</span> <span class="n">divtot</span> <span class="o">=</span>    <span class="mf">3.70E-17</span>   <span class="mf">2.28E-11</span> <span class="p">(</span><span class="n">rico</span><span class="p">,</span> <span class="mi">144</span><span class="n">x144</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>divmax for odd sizes is significantly larger, which is a sign that the
+solution is less accurate.  For now, odd domain sizes are not
+recommended. For future alternative Poisson solvers, we will aim to
+handle odd sizes correctly, rather than reproducing the current
+behavior.</p>
+<p>This problem should not be present for the FFTW-based solver, which is
+the default from DALES 5.0 on.</p>
 </section>
 </section>
 
@@ -624,6 +662,8 @@ we will aim to handle odd sizes correctly, rather than reproducing the current b
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-failiure">Compilation failiure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crash-or-segmentation-fault">Crash or segmentation fault</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#various-netcdf-errors">Various netCDF errors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-fftw-plan-creation-failed">STOP FFTW plan creation failed</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-compiler-error-with-ifort-19-0-5-281-20190815">Internal compiler error with ifort 19.0.5.281 20190815</a></li>

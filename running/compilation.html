@@ -479,6 +479,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-precision">Single precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-on-specific-systems">Compilation on specific systems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delftblue-tudelft-hpc">Delftblue (TUDelft HPC)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snellius-dutch-national-system">Snellius (Dutch National system)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tu-delft-vr-lab">TU Delft VR-lab</a><ul class="nav section-nav flex-column">
@@ -591,7 +592,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 <p>Compilation of the code may be sped up using the <code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">&lt;nprocs&gt;</span></code> specifier, with <code class="docutils literal notranslate"><span class="pre">nprocs</span></code> being the amount of parallel processes (4 to 8 is usually a good choice). After successfull compilation, the executable <code class="docutils literal notranslate"><span class="pre">dales</span></code> is located in the subdirectory <code class="docutils literal notranslate"><span class="pre">bin/</span></code>.</p>
 </section>
 <section id="compilation-options">
-<h2>Compilation options<a class="headerlink" href="#compilation-options" title="Link to this heading">#</a></h2>
+<span id="sec-compilation-options"></span><h2>Compilation options<a class="headerlink" href="#compilation-options" title="Link to this heading">#</a></h2>
 <p>It is possible to specify optional features at the compilation stage of the model. These optional features can be activated by adding them as specifyers to the cmake command. CMake options are specified as <code class="docutils literal notranslate"><span class="pre">-D&lt;option&gt;=&lt;value&gt;</span></code>. For example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../dales<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
 </pre></div>
@@ -676,6 +677,41 @@ the 32-bit Poisson solver has been unstable.</p>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cdo</span> <span class="n">ncview</span> <span class="n">netcdf</span><span class="o">-</span><span class="nb">bin</span>
 
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dalesteam</span><span class="o">/</span><span class="n">dales</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">dales</span>
+
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
+
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="macos">
+<h3>MacOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h3>
+<p>Install <a class="reference external" href="https://brew.sh/">homebrew</a>. Do check if you MacOS version is supported.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">make</span> <span class="n">cmake</span> <span class="nb">open</span><span class="o">-</span><span class="n">mpi</span> <span class="n">netcdf</span><span class="o">-</span><span class="n">fortran</span> <span class="n">git</span> <span class="n">fftw</span>
+</pre></div>
+</div>
+<p>Test if <code class="docutils literal notranslate"><span class="pre">gfortran</span> <span class="pre">--version</span></code> and <code class="docutils literal notranslate"><span class="pre">mpif90</span> <span class="pre">--version</span></code> work.</p>
+<p>Optional, for data viewing and processing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">ncview</span> <span class="n">cdo</span>
+</pre></div>
+</div>
+<p>for ncview to work, install <a class="reference external" href="https://www.xquartz.org/">xquartz</a>, and
+start any graphics application through the xquartz-terminal instead of
+the regular terminal.</p>
+<p>If you have anaconda installed and activated, deactivate it.
+Anaconda is present if the terminal prompt starts with <code class="docutils literal notranslate"><span class="pre">(base)</span></code>.
+If anaconda is active, it tends to interfere with the DALES compilation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+<p>After this preparation, the regular DALES compilation steps should work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dalesteam</span><span class="o">/</span><span class="n">dales</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">dales</span>
 
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
@@ -888,6 +924,7 @@ and some flags for linking the hdf5 library.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-precision">Single precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-on-specific-systems">Compilation on specific systems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delftblue-tudelft-hpc">Delftblue (TUDelft HPC)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snellius-dutch-national-system">Snellius (Dutch National system)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tu-delft-vr-lab">TU Delft VR-lab</a><ul class="nav section-nav flex-column">
