@@ -184,9 +184,7 @@ Optional, for data viewing and processing:
 brew install ncview cdo
 ```
 
-for ncview to work, install [xquartz](https://www.xquartz.org/), and
-start any graphics application through the xquartz-terminal instead of
-the regular terminal.
+for ncview to work, install [xquartz](https://www.xquartz.org/). In any terminal, you can use `ncview file.nc`. A graphical window will open in which you can visualise netcdf output.
 
 If you have anaconda installed and activated, deactivate it.
 Anaconda is present if the terminal prompt starts with `(base)`.
